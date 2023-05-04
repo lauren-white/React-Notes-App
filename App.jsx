@@ -21,7 +21,13 @@ export default function App() {
                 ...doc.data(),
                 id: doc.id
             }))
-            setNotes(notesArr)
+            setNotes(notesArr.sort((a,b)=>{
+                if(a.updatedAt > b.updatedAt){
+                    return -1
+                }else{
+                    return 1
+                }
+            }))
         })
         return unsubscribe
     }, [])
